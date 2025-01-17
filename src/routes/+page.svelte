@@ -1,65 +1,68 @@
 <script>
-    import Passo1 from "$lib/Passo1.svelte";
+    import Passi from "$lib/Passi.svelte";
     let formState = $state({
         answers: {},
         step: 0,
         error: "",
     });
-    let name = "user";
 
     const arrayOggetti = [
         {
             id: "nome",
             type: "text",
-            question: "Qual è il tuo nome?",
+            question: "Nome",
             stepDescription: "NOME",
+            subparagraph: "Per favore inserisci il tuo nome",
+
         },
         {
             id: "eta",
             type: "number",
-            question: "Quanti anni hai?",
+            question: "Età",
             stepDescription: "ETA'",
+            subparagraph: "Per favore inserisci la tua età",
         },
         {
             id: "presentazione",
             type: "textarea",
-            question: "Scrivi una breve presentazione di te",
+            question: "Presentazione",
             stepDescription: "PRESENTAZIONE",
+            subparagraph: "Per favore inserisci una breve presentazione su di te",
         },
         {
             id: "paese",
             list: ["italia", "spagna", "framncia", "germania", "altro"],
-            question: "In quale paese vivi?",
+            question: "Paese",
             stepDescription: "PAESE",
+            subparagraph: "Per favore scegli il tuo paese",
         },
         {
             id: "lavoro",
             list: ["google", "microsoft", "amazon", "altro"],
-            question: "In quale azienda hai lavorato?",
+            question: "Azienda",
             stepDescription: "AZIENDA",
+            subparagraph: "Per favore inserisci l'azienda in cui hai lavorato",
         },
         {
             id: "lavoroRemoto",
             type: "checkbox",
-            question: "Sei disponibile a lavorare da remoto?",
+            question: "Lavoro remoto",
             stepDescription: "LAVORO DA REMOTO",
+            subparagraph: "Per favore inserisci se sei disposto a lavorare da remoto",
         },
         {
             id: "anniEsperienza",
             type: "radio",
             datalist: ["1-2", "3-5", "più di 5"],
-            question: "Quanti anni di esperienza lavorativa hai?",
+            question: "Anni di esperienza",
             stepDescription: "ANNI DI ESPERIENZA",
+            subparagraph: "Per favore inserisci i tuoi anni di esperienza",
         },
     ];
 
-    function nextStep(id) {
-        if (!formState.answers[id]) {
-            formState.error = `Please enter your ${id}`;
-        } else {
-            formState.step += 1;
-            formState.error = "";
-        }
+
+    function allFieldFulfilled(){
+        return Object.keys(formState.answers).length === arrayOggetti.length;
     }
 
     function changeStep(step) {
@@ -70,56 +73,29 @@
 
 </script>
 
+<!--sidebar with steps on it-->
 <div class="relative">
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="274"
-        height="568"
-        fill="none"
-        viewBox="0 0 274 568"
-        ><rect width="274" height="568" fill="#483EFF" rx="10" /><mask
-            id="a"
-            width="274"
-            height="568"
-            x="0"
-            y="0"
-            maskUnits="userSpaceOnUse"
-            style="mask-type:alpha"
-            ><rect width="274" height="568" fill="#fff" rx="10" /></mask
-        ><g mask="url(#a)"
-            ><path
-                fill="#6259FF"
-                fill-rule="evenodd"
-                d="M-34.692 543.101C3.247 632.538 168.767 685.017 211.96 612.52c43.194-72.497-66.099-85.653-104.735-160.569-38.635-74.916-68.657-121.674-124.482-104.607-55.824 17.068-55.375 106.32-17.436 195.757Z"
-                clip-rule="evenodd"
-            /><path
-                fill="#F9818E"
-                fill-rule="evenodd"
-                d="M233.095 601.153c60.679-28.278 92.839-143.526 41.875-171.528-50.965-28.003-57.397 47.579-108.059 75.987-50.662 28.408-82.14 50.207-69.044 88.241 13.096 38.034 74.549 35.578 135.228 7.3Z"
-                clip-rule="evenodd"
-            /><path
-                stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="bevel"
-                stroke-width="5"
-                d="m165.305 469.097 10.607-10.806M209.461 474.581l-12.506-10.503M187.56 488.991l-6.908 14.798"
-            /><path
-                fill="#FFAF7E"
-                d="M.305 546.891c37.003 0 67-29.997 67-67s-29.997-67-67-67-67 29.997-67 67 29.997 67 67 67Z"
-            /></g
-        ></svg
-    >
+    <svg width="274" height="568" xmlns="http://www.w3.org/2000/svg" fill="none">
+
+        <mask maskUnits="userSpaceOnUse" y="0" x="0" height="568" width="274" id="a">
+         <rect id="svg_1" rx="10" fill="#fff" height="568" width="274"/>
+        </mask>
+        <g>
+         <title>Layer 1</title>
+         <rect id="svg_2" rx="10" fill="#483EFF" height="568" width="274"/>
+         <g id="svg_3" mask="url(#a)">
+          <path id="svg_4" clip-rule="evenodd" d="m-34.692,542.101c37.939,89.437 203.459,141.916 246.652,69.419c43.194,-72.497 -66.099,-85.653 -104.735,-160.569c-38.635,-74.916 -68.657,-121.674 -124.482,-104.607c-55.824,17.068 -55.375,106.32 -17.436,195.757l0.001,0z" fill-rule="evenodd" fill="#6259FF"/>
+          <path transform="rotate(-118.251 250.587 34.9546)" stroke="null" id="svg_5" clip-rule="evenodd" d="m286.095,113.153c60.679,-28.278 92.839,-143.526 41.875,-171.528c-50.965,-28.003 -57.397,47.579 -108.059,75.987c-50.662,28.408 -82.14,50.207 -69.044,88.241c13.096,38.034 74.549,35.578 135.228,7.3z" fill-rule="evenodd" fill="#F9818E"/>
+          <path id="svg_7" d="m245.305,363.891c37.003,0 67,-29.997 67,-67s-29.997,-67 -67,-67s-67,29.997 -67,67s29.997,67 67,67z" fill="#FFAF7E"/>
+          <path id="svg_8" d="m-3.695,556.891c37.003,0 67,-29.997 67,-67s-29.997,-67 -67,-67s-67,29.997 -67,67s29.997,67 67,67z" fill="#2a2af9"/>
+         </g>
+        </g>
+       </svg>
 
     <div id="steps" class="steps flex flex-col gap-4 w-5/6 items-center">
         {#each arrayOggetti as oggetto, index}
             <div class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
-                <i
-                    class="fa-{formState.step == index
-                        ? 'solid'
-                        : 'thin'} fa-circle-{index + 1} stepNumber"
-                    id="number{index + 1}"
-                    style="color: hsl(0, 0%, 100%);"
-                ></i>
+                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1} stepNumber" id="number{index + 1}" style="color: hsl(0, 0%, 100%);"></i>
                 <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
                 <div>
                     <div
@@ -139,59 +115,22 @@
 </div>
 
 {#if formState.step >= arrayOggetti.length}
-    <p>grazie {formState.answers.name} di aver risposto al sondaggio</p>
+    {#if allFieldFulfilled()}
+        <p>grazie {formState.answers.name} di aver risposto al sondaggio</p>
+    {:else}
+        <p>Per favore compila tutti i campi</p>
+    {/if}
 {/if}
 
-<div>
+<div class="w-full">
     {#each arrayOggetti as object, index}
         {#if formState.step === index}
             {@render formStep(object)}
         {/if}
     {/each}
 
-    {#if formState.error}
-        <p>{formState.error}</p>
-    {/if}
-
-    {#snippet formStep({ id, question, type, list, datalist })}
-        <div>
-            <label for={id}> {question}</label>
-
-
-            {#if datalist}
-                {#each datalist as scelta}
-                <label>
-                    <input type="radio" name={id} value={scelta} {id} bind:group={formState.answers[id]}/>
-                    {scelta}
-                </label>
-                {/each}
-            {/if}
-
-            {#if type === "textarea"}
-                <textarea {id} bind:value={formState.answers[id]}></textarea>
-            {/if}
-
-            {#if type === "checkbox"}
-                <input type="checkbox" name={type} {id} bind:checked={formState.answers[id]} />
-            {/if}
-
-            {#if type === "text" || type === "number"}
-                <input {type} name={type} {id} bind:value={formState.answers[id]} />
-            {/if}
-
-            {#if list}
-                <form>
-                    <select {id} bind:value={formState.answers[id]}>
-                        {#each list as scelta}
-                            <option value={scelta}>{scelta}</option>
-                        {/each}
-                    </select>
-                </form>
-            {/if}
-
-        <!-- <input {type} name={type} {id} bind:value={formState.answers[id]} /> -->
-        </div>
-        <button onclick={() => nextStep(id)}>next</button>
+    {#snippet formStep({ id, question, type, list, datalist,subparagraph })}
+        <Passi {id} {question} {type} {list} {datalist} {formState} {subparagraph}/>
     {/snippet}
 </div>
 
@@ -199,7 +138,7 @@
     @font-face {
         font-family: "Ubuntu-Bold";
         src: url("assets/fonts/Ubuntu-Bold.ttf") format("truetype");
-        weight: 1000;
+        weight: 700;
     }
 
     @font-face {
@@ -211,7 +150,7 @@
     @font-face {
         font-family: "Ubuntu-Medium";
         src: url("assets/fonts/Ubuntu-Medium.ttf") format("truetype");
-        weight: 400;
+        weight: 500;
     }
 
     .steps {
