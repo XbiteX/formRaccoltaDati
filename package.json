@@ -8,6 +8,9 @@
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package"
 	},
+	"engines": {
+  		"node": "18.x"
+	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
