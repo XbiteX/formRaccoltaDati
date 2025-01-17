@@ -1,3 +1,5 @@
+
+
 # create-svelte
 
 Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
@@ -132,9 +134,10 @@ The designs were created to the following widths:
 
 
 
-# Frontend Mentor - Multi-step form solution
+# Frontend Mentor - Multi-step form solution / school project
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). 
+And a school project to practice using svelte its bindings
 
 ## Table of contents
 
@@ -143,14 +146,13 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
+  - [Built with svelte](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -182,8 +184,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- GitHub repository: [github](https://github.com/XbiteX/formRaccoltaDati)
+- Live Site URL: [vercel](https://form-raccolta-dati.vercel.app/)
 
 ## My process
 
@@ -191,38 +193,45 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
-- CSS Grid
+- Tailwind
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Svelte](https://svelte.dev/) - Svelte framework
+- [Flowbite](https://flowbite-svelte.com/) - Flowbite with svelte
+- [Font awsome icons](https://fontawesome.com/) - For styles
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I've learned to install dependencies such as tailwind or flowbite on a svelte project.
+I've refined my knowledge learning more aboout tailwind classes, flowbite components, how the _+layout.svelte+ works, the "svelte logic", svelte props, how to import a font, how to install dependencies and also about SVG format (and its fields).
 
 To see how you can add code snippets, see below:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<h1>Some code I'm proud of</h1>
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+    @font-face {
+        font-family: "Ubuntu-Regular";
+        src: url("assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+        weight: 400;
+    }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+```svelte
+   <div id="steps" class="steps flex flex-col gap-4 w-5/6 items-center">
+        {#each arrayOggetti as oggetto, index}
+            <div class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
+                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1} stepNumber" id="number{index + 1}" style="color: hsl(0, 0%, 100%);"></i>
+                <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
+                <div>
+                    <div style="font-family: Ubuntu-Medium; color: hsl(0, 0%, 100%);">STEP {index + 1}</div>
+                    <div style="font-family: Ubuntu-Bold; color: hsl(0, 0%, 100%);">{oggetto.stepDescription}</div>
+                </div>
+            </div>
+        {/each}
+    </div>
+```
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
