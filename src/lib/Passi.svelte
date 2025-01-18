@@ -1,5 +1,9 @@
 <script>
-    let { id, question, type, list, datalist, formState, subparagraph} = $props();
+    import { Input, Checkbox, Radio, Textarea, Helper, Button} from 'flowbite-svelte';
+    import colors from "$lib/utils.json";
+
+
+    let { id, question, type, list, datalist, formState, subparagraph, textareaprops} = $props();
 
 
     function nextStep(id) {
@@ -14,6 +18,12 @@
     function lastStep(){
         formState.step -= 1;
     }
+
+    function colorForTheInputs(){
+        return formState.error ? "red" : "";
+    }
+
+
 </script>
 
 <div class="width-full bg-green-500 h-full relative flex flex-col items-center pt-10 ">
@@ -23,47 +33,51 @@
             <p>{subparagraph}</p>
         </div>
 
-        {#if datalist}
-            {#each datalist as scelta}
-            <label>
-                <input type="radio" name={id} value={scelta} {id} bind:group={formState.answers[id]}/>
-                {scelta}
-            </label>
-            {/each}
-        {/if}
-    
-        {#if type === "textarea"}
-            <textarea {id} bind:value={formState.answers[id]}></textarea>
-        {/if}
-    
-        {#if type === "checkbox"}
-            <input type="checkbox" name={type} {id} bind:checked={formState.answers[id]} />
-        {/if}
-    
-        {#if type === "text" || type === "number"}
-            <input {type} name={type} {id} bind:value={formState.answers[id]} />
-        {/if}
-    
-        {#if list}
-            <form>
-                <select {id} bind:value={formState.answers[id]}>
-                    {#each list as scelta}
-                        <option value={scelta}>{scelta}</option>
+        <div class="form_container">
+            <div class="inputs_container">
+                {#if datalist}
+                    {#each datalist as scelta}
+                        <Radio {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
                     {/each}
-                </select>
-            </form>
-        {/if}
-    
-    
-        {#if formState.error}
-            <p>{formState.error}</p>
-        {/if}
+                {/if}
+            
+                {#if type === "textarea"}
+                    <Textarea  bind:value={formState.answers[id]} color={colorForTheInputs()} {...textareaprops}/>
+                {/if}
+            
+                {#if type === "checkbox"}
+                    <Checkbox {id} name={type} color={colorForTheInputs()} bind:checked={formState.answers[id]} />
+                {/if}
+            
+                {#if type === "text" || type === "number"}
+                    <Input {id} {type} name={type} color={colorForTheInputs()} size="lg" placeholder="eg pippo..." bind:value={formState.answers[id]}/>
+                {/if}
+            
+                {#if list}
+                    <form>
+                        <select {id} bind:value={formState.answers[id]}>
+                            {#each list as scelta}
+                                <option value={scelta}>{scelta}</option>
+                            {/each}
+                        </select>
+                    </form>
+                {/if}
+
+            </div>
+
+            {#if formState.error}
+                {console.log(formState)}
+                <Helper class='mt-2' color='red'><span class="font-medium">Mannaggia a te!</span> {formState.error}</Helper>
+            {/if}
+
+        </div>
 
     </div>
+
     {#if formState.step !== 0}
-        <button class="absolute bottom-0 left-0" onclick={() => lastStep()}>Go Back</button>
+        <Button class="absolute bottom-0 left-0" style="background-color:transparent" onclick={() => lastStep()}>Go Back</Button>
     {/if}
-    <button class="absolute bottom-0 right-0" onclick={() => nextStep(id)}>Next Step</button>
+    <Button class="absolute bottom-0 right-0" style="background-color:hsl(213, 96%, 18%)" onclick={() => nextStep(id)}>Next Step</Button>
 </div>
 
 <style>
@@ -85,21 +99,29 @@
         weight: 500;
     }
 
+
     label{
-        font-family: Ubuntu-Bold;
+        font-family: "Ubuntu-Bold";
         color: hsl(213, 96%, 18%);
         font-size:  2.5rem;
     }
 
-    input{
-        width: 100%;
-        border-radius: 0.8rem;
+    .inputs_container{
+        font-family: "Ubuntu-Medium";
+        
     }
-
     p{
-        font-family: Ubuntu-Regular;
+        font-family: "Ubuntu-Regular";
         color: hsl(231, 11%, 63%);
         font-size:  1.2rem;
+    }
+
+    
+    Button{
+        background-color: transparent;
+        font-family: "Ubuntu-Bold";
+        color: hsl(213, 96%, 18%);
+        font-size:  1.5rem;
     }
 
 </style>

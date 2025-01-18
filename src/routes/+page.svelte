@@ -1,5 +1,7 @@
 <script>
     import Passi from "$lib/Passi.svelte";
+    import colors from "$lib/utils.json";
+
     let formState = $state({
         answers: {},
         step: 0,
@@ -23,11 +25,15 @@
             subparagraph: "Per favore inserisci la tua età",
         },
         {
-            id: "presentazione",
             type: "textarea",
-            question: "Presentazione",
             stepDescription: "PRESENTAZIONE",
             subparagraph: "Per favore inserisci una breve presentazione su di te",
+            textareaprops: {
+                id: 'presentazione',
+                name: 'textarea',
+                label: 'Presentazione',
+                rows: 4,
+            }
         },
         {
             id: "paese",
@@ -95,11 +101,11 @@
     <div id="steps" class="steps flex flex-col gap-4 w-5/6 items-center">
         {#each arrayOggetti as oggetto, index}
             <div class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
-                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1} stepNumber" id="number{index + 1}" style="color: hsl(0, 0%, 100%);"></i>
+                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1} stepNumber" id="number{index + 1}" style="color:{colors.neutral.Alabaster};"></i>
                 <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
                 <div>
-                    <div style="font-family: Ubuntu-Medium; color: hsl(0, 0%, 100%);">STEP {index + 1}</div>
-                    <div style="font-family: Ubuntu-Bold; color: hsl(0, 0%, 100%);">{oggetto.stepDescription}</div>
+                    <div style="font-family: Ubuntu-Medium; color:{colors.neutral.Alabaster};">STEP {index + 1}</div>
+                    <div style="font-family: Ubuntu-Bold; color:{colors.neutral.Alabaster};">{oggetto.stepDescription}</div>
                 </div>
             </div>
         {/each}
@@ -117,13 +123,11 @@
 <div class="w-full">
     {#each arrayOggetti as object, index}
         {#if formState.step === index}
-            {@render formStep(object)}
+            <Passi {...object} {formState}></Passi>
         {/if}
     {/each}
 
-    {#snippet formStep({ id, question, type, list, datalist,subparagraph })}
-        <Passi {id} {question} {type} {list} {datalist} {formState} {subparagraph}/>
-    {/snippet}
+
 </div>
 
 <style>
