@@ -8,10 +8,10 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
-      fontfamily:{
-        "ubuntu-bold": ['Ubuntu-Bold', 'sans-serif'],
-        "ubuntu-regular": ['Ubuntu-Regular', 'sans-serif'],
-        "ubuntu-medium": ['Ubuntu-Medium', 'sans-serif']
+      fontFamily:{
+        ubuntu_bold: ['Ubuntu-Bold', 'sans-serif'],
+        ubuntu_regular: ['Ubuntu-Regular', 'sans-serif'],
+        ubuntu_medium: ['Ubuntu-Medium', 'sans-serif']
       },
       colors: {
         // flowbite-svelte
