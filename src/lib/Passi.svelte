@@ -27,7 +27,7 @@
 
 <div class="width-full h-full flex flex-col items-center p-6">
     <div class="w-4/5 h-full flex flex-col items-center gap-y-10 relative">
-        <div class="bg-white w-full">
+        <div class="w-full">
             <label for={id} class="font-ubuntu_bold text-6xl text-Marine_blu"> {question}</label>
             <p class="text-Cool_gray text-xl font-ubuntu_regular">{subparagraph}</p>
         </div>
