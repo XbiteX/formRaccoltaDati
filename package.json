@@ -9,7 +9,7 @@
 		"prepublishOnly": "npm run package"
 	},
 	"engines": {
-  		"node": "16.x"
+  		"node": "22.x"
 	},
 	"files": [
 		"dist",
