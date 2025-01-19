@@ -100,14 +100,14 @@
 
     <div class="flex flex-col gap-4 w-5/6 items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         {#each arrayOggetti as oggetto, index}
-            <div class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
+            <button class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
                 <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1}  text-Alabaster text-4xl" id="number{index + 1}" ></i>
                 <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
                 <div>
                     <div class="text-Alabaster font-ubuntu_bold">STEP {index + 1}</div>
                     <div class="text-Alabaster font-regular">{oggetto.stepDescription}</div>
                 </div>
-            </div>
+            </button>
         {/each}
     </div>
 </div>
