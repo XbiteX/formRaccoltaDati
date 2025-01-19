@@ -28,12 +28,12 @@
 <div class="width-full h-full flex flex-col items-center p-6">
     <div class="w-4/5 h-full flex flex-col items-center gap-y-10 relative">
         <div class="bg-white w-full">
-            <label for={id} class="font"> {question}</label>
-            <p>{subparagraph}</p>
+            <label for={id} class="font-ubuntu_bold text-6xl text-Marine_blu"> {question}</label>
+            <p class="text-Cool_gray text-xl font-ubuntu_regular">{subparagraph}</p>
         </div>
 
         <div class="form_container w-full">
-            <div class="inputs_container">
+            <div class="font-ubuntu_medium ">
                 {#if datalist}
                     {#each datalist as scelta}
                         <Radio {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
@@ -72,37 +72,11 @@
         </div>
 
         {#if formState.step !== 0}
-        <Button class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu" onclick={() => lastStep()}>Go Back</Button>
+        <Button class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu font-ubuntu_bold" onclick={() => lastStep()}>Go Back</Button>
     {/if}
-    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu" onclick={() => nextStep(id)}>Next Step</Button>
+    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu font-ubuntu_bold" onclick={() => nextStep(id)}>Next Step</Button>
     </div>
 </div>
 
 <style>
-
-
-
-    label{
-        font-family: "Ubuntu-Bold";
-        color: hsl(213, 96%, 18%);
-        font-size:  2.5rem;
-    }
-
-    .inputs_container{
-        font-family: "Ubuntu-Medium";
-    }
-    p{
-        font-family: "Ubuntu-Regular";
-        color: hsl(231, 11%, 63%);
-        font-size:  1.2rem;
-    }
-
-    
-    Button{
-        background-color: transparent;
-        font-family: "Ubuntu-Bold";
-        color: hsl(213, 96%, 18%);
-        font-size:  1.5rem;
-    }
-
 </style>
