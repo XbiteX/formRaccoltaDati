@@ -8,19 +8,19 @@
     /*these are the fonts that i used*/
     @font-face {
         font-family: "Ubuntu-Bold";
-        src: url("/assets/fonts/Ubuntu-Bold.ttf") format("truetype");
+        src: url("src/lib/fonts/Ubuntu-Bold.ttf") format("truetype");
         font-weight: 700;
     }
     
     @font-face {
         font-family: "Ubuntu-Regular";
-        src: url("/assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+        src: url("src/lib/fonts/Ubuntu-Regular.ttf") format("truetype");
         font-weight: 400;
     }
     
     @font-face {
         font-family: "Ubuntu-Medium";
-        src: url("/assets/fonts/Ubuntu-Medium.ttf") format("truetype");
+        src: url("src/lib/fonts/Ubuntu-Medium.ttf") format("truetype");
         font-weight: 500;
     }
 }

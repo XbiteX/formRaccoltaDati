@@ -55,8 +55,9 @@
                 {#if list}
                 <!--da aaistemare-->
                     <Select class="bg-trasparent" {id} bind:value={formState.answers[id]}>
+                    <option selected value="all">All</option>
                         {#each list as { value, name }}
-                          <option class="color-red-500" {value}>{name}</option>
+                          <option class="color-red" {value}>{name}</option>
                         {/each}
                     </Select>
                 {/if}
