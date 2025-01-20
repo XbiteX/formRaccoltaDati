@@ -1,5 +1,5 @@
 <script>
-    import { Input, Checkbox, Radio, Textarea, Helper, Button} from 'flowbite-svelte';
+    import { Input, Checkbox, Radio, Textarea, Helper, Button, Select} from 'flowbite-svelte';
 
 
     let { id, question, type, list, datalist, formState, subparagraph, textareaprops} = $props();
@@ -36,30 +36,29 @@
             <div class="font-ubuntu_medium ">
                 {#if datalist}
                     {#each datalist as scelta}
-                        <Radio {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
+                        <Radio class="bg-trasparent" {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
                     {/each}
                 {/if}
             
                 {#if type === "textarea"}
-                    <Textarea  bind:value={formState.answers[id]} color={colorForTheInputs()} {...textareaprops}/>
+                    <Textarea class="bg-trasparent" bind:value={formState.answers[id]} color={colorForTheInputs()} {...textareaprops}/>
                 {/if}
             
                 {#if type === "checkbox"}
-                    <Checkbox {id} name={type} color={colorForTheInputs()} bind:checked={formState.answers[id]} />
+                    <Checkbox class="bg-trasparent" {id} name={type} color={colorForTheInputs()} bind:checked={formState.answers[id]} />
                 {/if}
             
                 {#if type === "text" || type === "number"}
-                    <Input {id} {type} name={type} color={colorForTheInputs()} size="lg" placeholder={subparagraph} bind:value={formState.answers[id]}/>
+                    <Input  class="bg-trasparent" {id} {type} name={type} color={colorForTheInputs()} size="lg" placeholder={subparagraph} bind:value={formState.answers[id]}/>
                 {/if}
             
                 {#if list}
-                    <form>
-                        <select {id} bind:value={formState.answers[id]}>
-                            {#each list as scelta}
-                                <option value={scelta}>{scelta}</option>
-                            {/each}
-                        </select>
-                    </form>
+                <!--da aaistemare-->
+                    <Select class="bg-trasparent" {id} bind:value={formState.answers[id]}>
+                        {#each list as { value, name }}
+                          <option class="color-red-500" {value}>{name}</option>
+                        {/each}
+                    </Select>
                 {/if}
 
             </div>
