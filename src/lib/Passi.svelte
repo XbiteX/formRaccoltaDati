@@ -33,7 +33,7 @@
         </div>
 
         <div class="form_container w-full">
-            <div class="ubunru-medium">
+            <div class="ubuntu-medium">
                 {#if datalist}
                     {#each datalist as scelta}
                         <Radio class="bg-trasparent" {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
@@ -41,7 +41,7 @@
                 {/if}
             
                 {#if type === "textarea"}
-                    <Textarea class="bg-trasparent" bind:value={formState.answers[id]} color={colorForTheInputs()} {...textareaprops}/>
+                    <Textarea class="bg-trasparent max-h-max" placeholder={subparagraph} bind:value={formState.answers[id]} color={colorForTheInputs()} {...textareaprops}/>
                 {/if}
             
                 {#if type === "checkbox"}
@@ -53,9 +53,7 @@
                 {/if}
             
                 {#if list}
-                <!--da aaistemare-->
                     <Select class="bg-trasparent" {id} bind:value={formState.answers[id]}>
-                    <option selected value="all">All</option>
                         {#each list as { value, name }}
                           <option class="color-red" {value}>{name}</option>
                         {/each}
@@ -79,4 +77,6 @@
 </div>
 
 <style>
+
+    
 </style>

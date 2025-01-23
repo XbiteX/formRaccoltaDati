@@ -1,6 +1,6 @@
 <script>
     import Passi from "$lib/Passi.svelte";
-
+    import Summary from "$lib/Summary.svelte";
     let formState = $state({
         answers: {},
         step: 0,
@@ -122,22 +122,23 @@
     </div>
 </div>
 
-{#if formState.step >= arrayOggetti.length}
-    {#if allFieldFulfilled()}
-        <p>grazie {formState.answers.name} di aver risposto al sondaggio</p>
-    {:else}
-        <p>Per favore compila tutti i campi</p>
-    {/if}
-{/if}
+
+
 
 <div class="w-full">
+    {#if formState.step >= arrayOggetti.length}
+        {#if allFieldFulfilled()}
+            <Summary {...formState.answers}/>
+            {:else}
+            <p>Per favore compila tutti i campi</p>
+        {/if}
+    {:else}
     {#each arrayOggetti as object, index}
         {#if formState.step === index}
             <Passi {...object} {formState}></Passi>
         {/if}
-    {/each}
-
-
+        {/each}
+    {/if}
 </div>
 
 <style>
