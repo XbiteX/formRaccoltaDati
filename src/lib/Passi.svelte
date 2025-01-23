@@ -28,12 +28,12 @@
 <div class="width-full h-full flex flex-col items-center p-6">
     <div class="w-4/5 h-full flex flex-col items-center gap-y-10 relative">
         <div class="w-full">
-            <label for={id} class="font-ubuntu_bold text-6xl text-Marine_blu"> {question}</label>
-            <p class="text-Cool_gray text-xl font-ubuntu_regular">{subparagraph}</p>
+            <label for={id} class="ubuntu-bold text-6xl text-Marine_blu"> {question}</label>
+            <p class="text-Cool_gray text-xl ubuntu-regular">{subparagraph}</p>
         </div>
 
         <div class="form_container w-full">
-            <div class="font-ubuntu_medium ">
+            <div class="ubunru-medium">
                 {#if datalist}
                     {#each datalist as scelta}
                         <Radio class="bg-trasparent" {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
@@ -72,9 +72,9 @@
         </div>
 
         {#if formState.step !== 0}
-        <Button class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu font-ubuntu_bold" onclick={() => lastStep()}>Go Back</Button>
+        <Button class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu ubuntu-bold" onclick={() => lastStep()}>Go Back</Button>
     {/if}
-    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu font-ubuntu_bold" onclick={() => nextStep(id)}>Next Step</Button>
+    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu ubuntu-bold" onclick={() => nextStep(id)}>Next Step</Button>
     </div>
 </div>
 

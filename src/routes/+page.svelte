@@ -114,8 +114,8 @@
                 <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1}  text-Alabaster text-4xl" id="number{index + 1}" ></i>
                 <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
                 <div>
-                    <div class="text-Alabaster font-ubuntu_bold">STEP {index + 1}</div>
-                    <div class="text-Alabaster font-regular">{oggetto.stepDescription}</div>
+                    <div class="text-Alabaster ubuntu-bold">STEP {index + 1}</div>
+                    <div class="text-Alabaster ubuntu-regular">{oggetto.stepDescription}</div>
                 </div>
             </div>
         {/each}
@@ -141,4 +141,5 @@
 </div>
 
 <style>
+
 </style>
