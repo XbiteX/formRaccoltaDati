@@ -10,7 +10,7 @@
         font-family: "Ubuntu-Bold";
         font-style: normal;
         font-display: swap;
-        src: url("src/lib/fonts/Ubuntu-Bold.ttf") format("truetype");
+        src: url("assets/fonts/Ubuntu-Bold.ttf") format("truetype");
         font-weight: 700;
     }
     
@@ -18,7 +18,7 @@
         font-family: "Ubuntu-Regular";
         font-style: normal;
         font-display: swap;
-        src: url("src/lib/fonts/Ubuntu-Regular.ttf") format("truetype");
+        src: url("assets/fonts/Ubuntu-Regular.ttf") format("truetype");
         font-weight: 400;
     }
     
@@ -26,7 +26,7 @@
         font-family: "Ubuntu-Medium";
         font-style: normal;
         font-display: swap;
-        src: url("src/lib/fonts/Ubuntu-Medium.ttf") format("truetype");
+        src: url("assets/fonts/Ubuntu-Medium.ttf") format("truetype");
         font-weight: 500;
     }
 }
