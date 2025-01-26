@@ -2,7 +2,15 @@
     import Passi from "$lib/Passi.svelte";
     import Summary from "$lib/Summary.svelte";
     let formState = $state({
-        answers: {},
+        answers: {
+            nome: "",
+            eta: "",
+            presentazione: "",
+            paese: "",
+            lavoro: "",
+            lavoroRemoto: false,
+            anniEsperienza: "",
+        },
         step: 0,
         error: "",
     });
@@ -24,6 +32,7 @@
             subparagraph: "Per favore inserisci la tua età",
         },
         {
+            id: "presentazione",
             type: "textarea",
             question: "Presentazione",
             stepDescription: "PRESENTAZIONE",
@@ -83,6 +92,7 @@
 
     function changeStep(step) {
         formState.step = step;
+        formState.error = "";
         console.log(formState);
     }
 

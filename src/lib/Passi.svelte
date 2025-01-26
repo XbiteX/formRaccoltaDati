@@ -6,9 +6,10 @@
 
 
     function nextStep(id) {
-        if (!formState.answers[id]) {
+        if (formState.answers[id] === "") {
             formState.error = `Please enter your ${id}`;
         } else {
+            console.log(formState);
             formState.step += 1;
             formState.error = "";
         }
@@ -35,9 +36,18 @@
         <div class="form_container w-full">
             <div class="ubuntu-medium">
                 {#if datalist}
+                <div class="grid gap-6 w-full md:grid-cols-3">
                     {#each datalist as scelta}
-                        <Radio class="bg-trasparent" {id} name={id} value={scelta} color={colorForTheInputs()} bind:group={formState.answers[id]}>{scelta}</Radio>
+                    <Radio {id} name={id} value={scelta}  color={colorForTheInputs()} bind:group={formState.answers[id]} custom>
+                        <div class="inline-flex justify-between items-center p-5 w-full aspect-square text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <div>
+                                <div class="w-full text-lg font-semibold">{scelta}</div>
+                            </div>
+                        </div>
+                    </Radio>
                     {/each}
+                </div>
+
                 {/if}
             
                 {#if type === "textarea"}
@@ -49,7 +59,7 @@
                 {/if}
             
                 {#if type === "text" || type === "number"}
-                    <Input  class="bg-trasparent" {id} {type} name={type} color={colorForTheInputs()} size="lg" placeholder={subparagraph} bind:value={formState.answers[id]}/>
+                    <Input  class="bg-trasparent" min="16" max="100" {id} {type} name={type} color={colorForTheInputs()} size="lg" placeholder={subparagraph} bind:value={formState.answers[id]}/>
                 {/if}
             
                 {#if list}
