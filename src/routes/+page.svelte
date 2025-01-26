@@ -3,13 +3,7 @@
     import Summary from "$lib/Summary.svelte";
     let formState = $state({
         answers: {
-            nome: "",
-            eta: "",
-            presentazione: "",
-            paese: "",
-            lavoro: "",
             lavoroRemoto: false,
-            anniEsperienza: "",
         },
         step: 0,
         error: "",
@@ -87,7 +81,7 @@
 
 
     function allFieldFulfilled(){
-        return Object.keys(formState.answers).length === arrayOggetti.length;
+        return Object.values(formState.answers).every(value => value !== "" && value !== undefined);
     }
 
     function changeStep(step) {
@@ -95,6 +89,17 @@
         formState.error = "";
         console.log(formState);
     }
+
+    function iconColor(id){
+        if(formState.step >= arrayOggetti.length && (formState.answers[id] == undefined || formState.answers[id] === "")){
+            return "Strawberry_red";
+        } else {
+            return "Alabaster";
+
+        }
+    }
+
+
 
 
 </script>
@@ -116,12 +121,12 @@
           <path id="svg_8" d="m-3.695,556.891c37.003,0 67,-29.997 67,-67s-29.997,-67 -67,-67s-67,29.997 -67,67s29.997,67 67,67z" fill="#2a2af9"/>
          </g>
         </g>
-       </svg>
+    </svg>
 
     <div class="flex flex-col gap-4 w-5/6 items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
         {#each arrayOggetti as oggetto, index}
             <div role="button" class="flex gap-4 w-5/6" onclick={() => changeStep(index)}>
-                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1}  text-Alabaster text-4xl" id="number{index + 1}" ></i>
+                <i class="fa-{formState.step == index ? 'solid' : 'thin'} fa-circle-{index + 1} text-{iconColor(oggetto.id)} text-4xl" id="number{index + 1}" ></i>
                 <!-- if the object has the same index of the step number than the icon will be thick (solid) -->
                 <div>
                     <div class="text-Alabaster ubuntu-bold">STEP {index + 1}</div>
@@ -139,14 +144,15 @@
     {#if formState.step >= arrayOggetti.length}
         {#if allFieldFulfilled()}
             <Summary {...formState.answers}/>
-            {:else}
-            <p>Per favore compila tutti i campi</p>
+        {:else}
+            {alert("Compila tutti i campi")}
+            {changeStep(arrayOggetti.length - 1)}
         {/if}
     {:else}
-    {#each arrayOggetti as object, index}
-        {#if formState.step === index}
-            <Passi {...object} {formState}></Passi>
-        {/if}
+        {#each arrayOggetti as object, index}
+            {#if formState.step === index}
+                <Passi {...object} {formState}></Passi>
+            {/if}
         {/each}
     {/if}
 </div>

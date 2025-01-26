@@ -6,7 +6,7 @@
 
 
     function nextStep(id) {
-        if (formState.answers[id] === "") {
+        if (formState.answers[id] === "" || formState.answers[id] === undefined) {
             formState.error = `Please enter your ${id}`;
         } else {
             console.log(formState);
@@ -20,7 +20,7 @@
     }
 
     function colorForTheInputs(){
-        return formState.error ? "red" : "";
+        return formState.error ? "red" : "blue";
     }
 
 
@@ -38,10 +38,12 @@
                 {#if datalist}
                 <div class="grid gap-6 w-full md:grid-cols-3">
                     {#each datalist as scelta}
-                    <Radio {id} name={id} value={scelta}  color={colorForTheInputs()} bind:group={formState.answers[id]} custom>
-                        <div class="inline-flex justify-between items-center p-5 w-full aspect-square text-gray-500 bg-white rounded-lg border border-gray-200 cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <Radio {id} name={id} value={scelta} bind:group={formState.answers[id]} custom>
+                        <div class="inline-flex justify-center items-center p-5 w-full aspect-square text-{colorForTheInputs()}-500 bg-white rounded-lg border border-{colorForTheInputs()}-500 cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:bg-blue-50">
                             <div>
-                                <div class="w-full text-lg font-semibold">{scelta}</div>
+                                <div class="w-full text-xl font-semibold flex items-center justify-center ubuntu-bold">
+                                    {scelta}
+                                </div>
                             </div>
                         </div>
                     </Radio>
