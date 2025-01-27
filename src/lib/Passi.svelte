@@ -76,15 +76,15 @@
 
             {#if formState.error}
                 {console.log(formState)}
-                <Helper class='mt-2' color='red'><span class="font-medium ">Mannaggia a te!</span> {formState.error}</Helper>
+                <Helper class='mt-2' color='red'><span class="font-medium ">{formState.error}</span></Helper>
             {/if}
 
         </div>
 
         {#if formState.step !== 0}
-        <Button class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu ubuntu-bold" onclick={() => lastStep()}>Go Back</Button>
+        <Button  class="absolute bottom-0 left-0 focus:outline-none focus:ring-0 bg-trasparent text-Marine_blu ubuntu-bold hover:bg-gray-200" onclick={() => lastStep()}>Go Back</Button>
     {/if}
-    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu ubuntu-bold" onclick={() => nextStep(id)}>Next Step</Button>
+    <Button class="absolute bottom-0 right-0 focus:outline-none focus:ring-0 bg-Marine_blu ubuntu-bold hover:bg-blue-500" onclick={() => nextStep(id)}>Next Step</Button>
     </div>
 </div>
 
