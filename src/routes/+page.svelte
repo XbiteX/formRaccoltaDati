@@ -1,6 +1,6 @@
 <script>
     import Passi from "$lib/Passi.svelte";
-    import Summary from "$lib/Summary.svelte";
+
     let formState = $state({
         answers: {
             lavoroRemoto: false,
@@ -8,6 +8,18 @@
         step: 0,
         error: "",
     });
+    // http://localhost:3080/utente
+    async function sendData() {
+        const res = await fetch("https://backend-form-sandy.vercel.app/utente", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json" 
+        },
+        body: JSON.stringify(formState.answers),
+        });
+        const responseData = await res.json();
+        console.log(responseData);
+    }
 
     const arrayOggetti = [
         {
@@ -143,7 +155,7 @@
 <div class="w-full">
     {#if formState.step >= arrayOggetti.length}
         {#if allFieldFulfilled()}
-            <Summary {...formState.answers}/>
+            {sendData()}
         {:else}
             {alert("Compila tutti i campi")}
             {changeStep(arrayOggetti.length - 1)}
