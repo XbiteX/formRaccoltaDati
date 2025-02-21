@@ -5,7 +5,7 @@
         answers: {
             lavoroRemoto: false,
         },
-        step: 1,
+        step: 0,
         error: "",
     });
 
