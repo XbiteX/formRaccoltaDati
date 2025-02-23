@@ -76,15 +76,6 @@ npm publish
 
 # Front-end Style Guide
 
-## Layout
-
-The designs were created to the following widths:
-
-- Mobile: 375px
-- Desktop: 1440px
-
-> 💡 These are just the design sizes. Ensure content is responsive and meets WCAG requirements by testing the full range of screen sizes from 320px to large screens.
-
 ## Colors
 
 ### Primary
@@ -113,21 +104,6 @@ The designs were created to the following widths:
 
 - Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu)
 - Weights: 400, 500, 700
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -172,7 +148,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](![image](https://github.com/user-attachments/assets/e4f2b36c-ca00-489a-ae48-743b7f723525)
+)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
