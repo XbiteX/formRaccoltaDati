@@ -1,5 +1,6 @@
 <script>
     import Passi from "$lib/Passi.svelte";
+    import Summary from "$lib/Summary.svelte";
 
     let formState = $state({
         answers: {
@@ -18,7 +19,7 @@
         body: JSON.stringify(formState.answers),
         });
         const responseData = await res.json();
-        console.log(responseData);
+        return responseData;
     }
 
     const arrayOggetti = [
@@ -155,7 +156,11 @@
 <div class="w-full">
     {#if formState.step >= arrayOggetti.length}
         {#if allFieldFulfilled()}
-            {sendData()}
+        {#await sendData() then data}
+            {#if data}
+            <Summary {...data}></Summary>            
+            {/if}    
+        {/await}
         {:else}
             {alert("Compila tutti i campi")}
             {changeStep(arrayOggetti.length - 1)}
